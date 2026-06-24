@@ -2,6 +2,14 @@
 
 Extensão disponível para Chrome e Firefox que possibilita a integração entre o Sistema Eletrônico de Informações (SEI) e o Trello.
 
+## Política de Privacidade
+
+Esta extensão **não coleta, armazena, vende nem transfere dados pessoais dos usuários** a terceiros.
+
+Os únicos dados salvos são as credenciais do Trello (APP-KEY e TOKEN) e as preferências do usuário (quadro e lista padrão), armazenados localmente no navegador via `chrome.storage.sync`. Esses dados são usados exclusivamente para autenticar as requisições à API oficial do Trello (`api.trello.com`) e nunca são enviados a nenhum servidor externo além do próprio Trello.
+
+A extensão não monitora atividade do usuário, não lê histórico de navegação e não acessa nenhuma informação além das páginas do SEI onde é ativada.
+
 :blue_book: Leia a [documentação](https://luiscrjunior.github.io/sei-trello/) para saber mais detalhes.
 
 :pencil: Acesse o [CHANGELOG](CHANGELOG.md) para conhecer as atualizações de cada versão.
