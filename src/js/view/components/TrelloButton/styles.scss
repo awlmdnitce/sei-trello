@@ -3,7 +3,7 @@
   display: inline-block;
   height: 40px;
   width: 40px;
-  background-color: #0494c7;
+  background-color: var(--sei-theme, #0494c7);
   border: 0.1em solid white;
   vertical-align: middle;
 }

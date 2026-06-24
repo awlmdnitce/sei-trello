@@ -2,10 +2,11 @@
   position: relative;
   margin: 5px 0;
   padding: 5px 5px 10px 5px;
-  border: 1px solid #aaa;
-  box-shadow: 1px 1px 2px 0 #ddd;
+  border: 1px solid var(--sei-card-border, #c8ccd0);
+  border-left: 4px solid var(--sei-theme, #0079bf);
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.12);
   border-radius: 3px;
-  background-color: #e2e4e6;
+  background-color: var(--sei-card-bg, #ffffff);
   width: 300px;
   overflow: visible;
 
@@ -35,9 +36,9 @@
   top: 0;
   right: 0;
   padding: 1px 5px 0 0;
-  background-color: #e2e4e6;
+  background-color: var(--sei-card-bg, #ffffff);
   border-radius: 6px;
-  box-shadow: -6px 6px 12px 0 #e2e4e6;
+  box-shadow: -6px 6px 12px 0 var(--sei-card-bg, #ffffff);
 }
 
 .card.highlight > .options {
@@ -88,6 +89,7 @@
   font-size: 14px;
   font-weight: 600;
   word-break: break-word;
+  color: #172b4d;
 }
 
 .labels {
