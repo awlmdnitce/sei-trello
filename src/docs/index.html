@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <include src="partials/head.html"></include>
+  </head>
+
+  <body>
+    <include
+      src="partials/header.html"
+      locals='{
+        "menu": "index",
+        "version": "{{ version }}"
+      }'
+    ></include>
+
+    <div class="hero">
+      <div class="hero-content">
+        <i class="fab fa-trello fa-hero-bg"></i>
+        <p class="logo">SEI+Trello</p>
+        <p class="subtitle">Extensão que integra o Sistema Eletrônico de Informações (SEI) e o Trello.</p>
+        <div class="download-buttons">
+          <a
+            href="https://chrome.google.com/webstore/detail/sei%2Btrello/dnjlkohajpocckjiddppmfhkpfdbkecl?hl=pt-BR"
+            target="_blank"
+            class="download-button chrome"
+            ><i class="fab fa-chrome"></i> <span>Adicionar ao Chrome</span></a
+          >
+          <a
+            href="https://addons.mozilla.org/pt-BR/firefox/addon/sei-trello/"
+            target="_blank"
+            class="download-button firefox"
+            ><i class="fab fa-firefox-browser"></i> <span>Adicionar ao Firefox</span></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-content">
+        <div class="section-col-details">
+          <i class="fab fa-trello fa-details-icon"></i>
+          <h2 class="details-description">Organize seu ambiente SEI utilizando os cartões do Trello.</h2>
+        </div>
+        <div class="section-col-details">
+          <i class="fas fa-chart-line fa-details-icon"></i>
+          <h2 class="details-description">Melhore a sua produtividade e a da sua equipe.</h2>
+        </div>
+        <div class="section-col-details">
+          <i class="fas fa-users fa-details-icon"></i>
+          <h2 class="details-description">Toda a equipe poderá usar o mesmo quadro do Trello compartilhado.</h2>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content reverse">
+        <div class="section-col-content">
+          <h2 class="section-title">Cartões do Trello no SEI</h2>
+          <p class="section-description">
+            Os cartões do Trello aparecem no lugar do número do processo na página principal de controle de processos do
+            SEI e também na página de visualização do processo, no topo da árvore de documentos.
+          </p>
+        </div>
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello1.png" class="trello-img-feature trello-img-feature-cards" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content">
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello2.png" class="trello-img-feature trello-img-feature-create-cards" />
+          </div>
+        </div>
+        <div class="section-col-content">
+          <h2 class="section-title">Crie um cartão para o processo</h2>
+          <p class="section-description">Você pode vincular um cartão do Trello a um processo de duas formas:</p>
+          <p class="section-description">
+            <i class="fas fa-arrow-circle-right"></i> Uma delas é dentro do próprio SEI ao clicar no botão
+            <span class="highlight">Criar cartão relacionado a este processo</span> (<img
+              src="images/add-trello-card-button.png"
+              class="trello-icon trello-icon-add-card"
+            />), botão esse que a extensão adiciona automaticamente ao lado de cada processo.
+          </p>
+
+          <p class="section-nested-description">
+            <i class="far fa-lightbulb"></i> Se o processo possuir uma especificação, ela vira automaticamente o título
+            do cartão.
+          </p>
+          <p class="section-nested-description">
+            <i class="far fa-lightbulb"></i> Se o processo possuir uma anotação associada,ela vira automaticamente a
+            descrição do cartão.
+          </p>
+
+          <p class="section-description">
+            <i class="fas fa-arrow-circle-right"></i> A outra maneira é escrever na descrição do cartão no próprio
+            Trello a diretriz "SEI" seguido de um espaço e o número do processo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content reverse">
+        <div class="section-col-content">
+          <h2 class="section-title">Nome e descrição do cartão</h2>
+          <p class="section-description">
+            Você pode visualizar e editar o nome e a descrição de cada cartão criado. Use esses campos para auxiliar na
+            identificação sobre qual assunto aquele processo se refere ou adicionar informações complementares.
+          </p>
+        </div>
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello3.png" class="trello-img-feature trello-img-feature-name-desc" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content">
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello4.png" class="trello-img-feature trello-img-feature-due" />
+          </div>
+        </div>
+        <div class="section-col-content">
+          <h2 class="section-title">Data de entrega</h2>
+          <p class="section-description">
+            Você pode visualizar e especificar uma data de entrega para aquele cartão. No cartão, há um indicador de
+            quanto tempo falta para atingir o prazo (<span class="due-label normal">2 dias</span>,
+            <span class="due-label warning">amanhã</span>, <span class="due-label warning">hoje</span>, ...).
+          </p>
+          <p class="section-nested-description">
+            <i class="far fa-lightbulb"></i> Se estiver em atraso, aparece a mensagem
+            <span class="due-label danger">Atrasado</span>.
+          </p>
+          <p class="section-nested-description">
+            <i class="far fa-lightbulb"></i> Se a tarefa já estiver sido concluída, aparecerá
+            <span class="due-label normal">Concluído</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content reverse">
+        <div class="section-col-content">
+          <h2 class="section-title">Etiquetas</h2>
+          <p class="section-description">
+            Visualize, edite e atribua as etiquetas no cartão, facilitando assim a organização dos seus processos da
+            forma que você preferir.
+          </p>
+        </div>
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello5.png" class="trello-img-feature trello-img-feature-label" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content">
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello6.png" class="trello-img-feature trello-img-feature-checklist" />
+          </div>
+        </div>
+        <div class="section-col-content">
+          <h2 class="section-title">Checklist</h2>
+          <p class="section-description">
+            Visualize e edite itens do checklist, possibilitando assim inserir, editar e deletar as tarefas relacionadas
+            àquele cartão.
+          </p>
+          <p class="section-nested-description">
+            <i class="far fa-lightbulb"></i> Você pode arrastar os checklists para alterar sua ordem, como no Trello!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content reverse">
+        <div class="section-col-content">
+          <h2 class="section-title">Localização</h2>
+          <p class="section-description">
+            Além de visualizar, você também pode editar o quadro e a lista em que o cartão está localizado, o que também
+            pode ser uma forma de organizar os cartões por assunto/temática.
+          </p>
+        </div>
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello7.png" class="trello-img-feature trello-img-feature-location" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr />
+      <div class="section-content">
+        <div class="section-col-remain">
+          <div class="trello-img-feature-wrapper">
+            <img src="images/trello8.png" class="trello-img-feature trello-img-feature-filter" />
+          </div>
+        </div>
+        <div class="section-col-content">
+          <h2 class="section-title">Filtrar</h2>
+          <p class="section-description">
+            A extensão adiciona um botão que permite filtrar os processos (<img
+              src="images/filter-button.png"
+              class="trello-icon trello-icon-filter-button"
+            />) por localização, etiquetas e por data de entrega. Por exemplo, você pode filtrar os processos que
+            possuem determinada etiqueta, que estão com a data de entrega em aberto, que estejam em determinada
+            localização (quadro/lista), que não possuam cartões vinculados...
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wanna-use">
+      <div class="section-content">
+        <div class="section-col-content wanna-use">
+          <h2 class="section-title wanna-use">Quer começar a usar?</h2>
+          <p class="section-description wanna-use">
+            Depois de baixar, você precisa configurar a extensão para acessar sua conta do Trello. É simples!
+          </p>
+        </div>
+        <div class="section-col-remain wanna-use">
+          <a href="instalacao.html" class="cta-btn"
+            ><i class="fas fa-book"></i> <span>Acesse nosso guia de instalação</span></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="feedback">
+      <div class="section-content feedback">
+        <div class="section-col-content third feedback">
+          <h2 class="section-title feedback">
+            <i class="fas fa-hand-point-right"></i> Tem alguma sugestão, dúvida, ou encontrou algum bug?
+          </h2>
+          <p class="section-description feedback">
+            Fique à vontade para abrir uma
+            <a href="https://github.com/luiscrjunior/sei-trello/issues">issue</a> no Github.
+          </p>
+        </div>
+
+        <div class="section-col-content third feedback dark">
+          <h2 class="section-title feedback"><i class="fas fa-star"></i> Gostou do projeto?</h2>
+          <p class="section-description feedback">
+            Ajude a divulgar a extensão e, se quiser, deixe sua estrela lá no
+            <a
+              class="github-button"
+              href="https://github.com/luiscrjunior/sei-trello"
+              data-show-count="true"
+              aria-label="Star luiscrjunior/sei-trello on GitHub"
+              >Github</a
+            >
+            e avalie a extensão nas lojas.
+          </p>
+        </div>
+
+        <div class="section-col-content third feedback">
+          <h2 class="section-title feedback"><i class="fas fa-envelope"></i> Contato</h2>
+
+          <p class="section-description feedback">
+            Mande um e-mail para
+            <a href="mailto:luis.reischak@gmail.com">luis.reischak@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <include src="partials/footer.html"></include>
+  </body>
+</html>
