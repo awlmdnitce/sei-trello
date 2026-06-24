@@ -9,7 +9,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "sei-trello@luiscrjunior",
-      "strict_min_version": "52.0"
+      "strict_min_version": "109.0"
     }
   },
   "icons": {
