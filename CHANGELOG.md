@@ -1,3 +1,8 @@
+## [1.6.8] - 25/06/2026
+
+- Atualizada `homepage_url` e campo `author` no manifest para apontar para o repositório do fork.
+- Reescrito README deixando claro que se trata de fork comunitário em versão Beta, com créditos ao projeto original.
+
 ## [1.6.7] - 24/06/2026
 
 - Corrigido erro crítico de compatibilidade com Manifest V3: removida chamada à API `chrome.pageAction` que foi removida no MV3.

@@ -1,6 +1,6 @@
 {
   "name": "sei_trello",
-  "version": "1.0.0",
+  "version": "1.6.8",
   "description": "Integração SEI e Trello",
   "main": "index.js",
   "browserslist": "defaults",
