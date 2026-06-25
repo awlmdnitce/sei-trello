@@ -16,9 +16,9 @@ A extensão não monitora atividade do usuário, não lê histórico de navegaç
 
 ## Quer apenas usar a extensão?
 
-:arrow_right: Está usando o **Chrome**? Acesse a página da extensão na [na Chrome Web Store](https://chrome.google.com/webstore/detail/sei%2Btrello/dnjlkohajpocckjiddppmfhkpfdbkecl?hl=pt-BR) e clique em `Usar no Chrome` (canto superior direito).
+:arrow_right: Está usando o **Chrome**? Acesse a página da extensão [na Chrome Web Store](https://chromewebstore.google.com/detail/sei%2Btrello/jfegjbaokkioppehhmelfdbjinfcbdmj?hl=pt-BR) e clique em `Usar no Chrome` (canto superior direito).
 
-:arrow_right: Está usando o **Firefox**? Acesse a página da extensão [no Firefox Browser Add-Ons](https://addons.mozilla.org/pt-BR/firefox/addon/sei-trello/) e clique em `Adicionar ao Firefox`.
+:arrow_right: Está usando o **Firefox**? Acesse a página da extensão [no Firefox Browser Add-Ons](https://addons.mozilla.org/pt-BR/firefox/addon/sei-trello-fork/) e clique em `Adicionar ao Firefox`.
 
 Depois de instalar a extensão, configure-a na página de opções (credenciais e outras informações, tais como lista e quadro padrão) e pronto! Abra o SEI e seu Trello já estará integrado.
 
