@@ -1,6 +1,19 @@
-# SEI+Trello
+# SEI+Trello _(fork comunitário — versão Beta)_
 
-Extensão disponível para Chrome e Firefox que possibilita a integração entre o Sistema Eletrônico de Informações (SEI) e o Trello.
+> **Este é um fork não oficial** do projeto original [SEI+Trello](https://github.com/luiscrjunior/sei-trello), criado por [Luís Carlos Reischak Júnior](https://github.com/luiscrjunior). O projeto original parou de receber atualizações e esta versão surgiu da necessidade de compatibilidade com o SEI 4.x e o Manifest V3 do Chrome/Firefox.
+>
+> ⚠️ **Versão Beta.** Pode conter instabilidades. Contribuições são bem-vindas!
+
+Extensão para Chrome e Firefox que integra o [Sistema Eletrônico de Informações (SEI)](https://www.gov.br/gestao/pt-br/sei) ao [Trello](https://trello.com), permitindo visualizar e criar cartões diretamente na interface do SEI — sem precisar alternar entre os dois sistemas.
+
+## O que há de novo neste fork?
+
+Comparado ao projeto original, esta versão traz:
+
+- ✅ **Compatibilidade com SEI 4.x** — novos seletores DOM e fallbacks para a interface atualizada do SEI
+- ✅ **Manifest V3** — necessário para continuar funcionando no Chrome e Firefox modernos
+- ✅ **Cores responsivas ao tema do SEI** — os cartões Trello assumem automaticamente a cor de tema escolhida pelo usuário no SEI
+- ✅ **Build atualizado** — migração de `node-sass` para `sass` (Dart Sass), compatível com Node.js 22+
 
 ## Política de Privacidade
 
@@ -10,8 +23,6 @@ Os únicos dados salvos são as credenciais do Trello (APP-KEY e TOKEN) e as pre
 
 A extensão não monitora atividade do usuário, não lê histórico de navegação e não acessa nenhuma informação além das páginas do SEI onde é ativada.
 
-:blue_book: Leia a [documentação](https://luiscrjunior.github.io/sei-trello/) para saber mais detalhes.
-
 :pencil: Acesse o [CHANGELOG](CHANGELOG.md) para conhecer as atualizações de cada versão.
 
 ## Quer apenas usar a extensão?
@@ -20,70 +31,88 @@ A extensão não monitora atividade do usuário, não lê histórico de navegaç
 
 :arrow_right: Está usando o **Firefox**? Acesse a página da extensão [no Firefox Browser Add-Ons](https://addons.mozilla.org/pt-BR/firefox/addon/sei-trello-fork/) e clique em `Adicionar ao Firefox`.
 
-Depois de instalar a extensão, configure-a na página de opções (credenciais e outras informações, tais como lista e quadro padrão) e pronto! Abra o SEI e seu Trello já estará integrado.
+Depois de instalar, acesse a página de opções da extensão e informe:
+1. Sua **Trello APP-KEY** (obtenha em [trello.com/app-key](https://trello.com/app-key))
+2. Seu **Trello TOKEN**
+3. O nome do **quadro padrão**
+4. O nome da **lista padrão**
+
+Pronto! Abra o SEI e seu Trello já estará integrado.
+
+## Encontrou um bug ou tem uma sugestão?
+
+Abra uma [issue neste repositório](https://github.com/awlmdnitce/sei-trello/issues). Esta é uma versão Beta mantida pela comunidade — todo feedback é bem-vindo.
 
 ## Quer contribuir com o desenvolvimento?
 
-A extensão está sendo mantida neste repositório e quem quiser colaborar, fique à vontade em submeter seu _pull request_.
+Fique à vontade para abrir _pull requests_. O projeto usa as seguintes tecnologias:
 
-### Tecnologias utilizadas
+- **JavaScript ES6+** transpilado via [`babel`](https://babeljs.io/)
+- **React** para os componentes de interface
+- **Webpack 5** como bundler
+- **Sass** (Dart Sass) para os estilos
+- **npm** como gerenciador de pacotes
 
-O código é escrito em `javascript` (todo ele em [`es6`](http://www.ecma-international.org/ecma-262/6.0/)), com transpilação para es5 via [`babel`](https://babeljs.io/). O gerenciador de pacotes é o [`npm`](https://www.npmjs.com/), o bundler é o [`webpack`](https://webpack.js.org/) e a renderização usa [`react`](https://reactjs.org/). Então, o desenvolvedor deve ter conhecimentos mínimos nessas ferramentas, além do `git`, claro.
+### Requisitos
 
-### Requisito mínimo
-
-`npm` instalado (de preferência uma versão recente).
+- Node.js 18+ (testado no Node.js 22 no Windows)
+- npm instalado
 
 ### Ambiente de desenvolvimento
 
-Para criar o ambiente de desenvolvimento, você deve primeiro clonar este repositório ou seu fork:
+Clone este repositório:
 
 ```
-git clone git@github.com:luiscrjunior/sei-trello.git
-```
-
-Entre no diretório do repositório e faça um:
-
-```
+git clone https://github.com/awlmdnitce/sei-trello.git
+cd sei-trello
 npm install
 ```
 
-Isto irá instalar todos os pacotes listados no `package.json`, necessários ao funcionamento da aplicação.
-
-A extensão ainda não foi gerada. Ela pode ser compilada com o comando:
+Compile em modo desenvolvimento (com watch):
 
 ```
-npm run webpack:dev
+npm run webpack:dev:watch
 ```
 
-Isto irá gerar o código da extensão no subdiretório `dist/expanded`.
+O código gerado fica em `dist/expanded`. Carregue esse diretório no Chrome em **Gerenciar extensões → Modo desenvolvedor → Carregar extensão expandida**, ou no Firefox em **about:debugging → Carregar extensão temporária**.
 
-Este diretório poderá ser incluído no Chrome na página de Gerenciamento de Extensões, no "Modo de desenvolvedor", como extensão expandida ("Carregar expansão expandida..."). No Firefox, carregue a extensão expandida nas configurações de Add-ons.
+Para gerar a versão de produção (minificada):
 
-O comando `npm run webpack:dev:watch` monitora a mudança nos arquivos e compila em tempo real a cada modificação no código fonte.
-
-Para gerar uma versão de produção, use o comando `npm run webpack:prod`. A versão final será minificada e o código morto (logs, debug) será eliminado.
-
-_Obs.: não testei esse setup no Windows, apenas no linux. Os comandos provavelmente devem ser adaptados. Se alguém puder testar e documentar, agradeço._
+```
+npm run webpack:prod
+```
 
 ### Testes
 
-O projeto conta com testes unitários, de integração e end-to-end (com puppeteer). A cobertura não é total, mas abrangem as principais funcionalidades.
+```
+npm run webpack:test   # gera bundle de testes (necessário para e2e)
+npm run test           # executa todos os testes
+```
 
-Gere o bundle para testes antes com `npm run webpack:test` (somente necessário para os testes e2e). Depois, para rodar todos os testes, execute `npm run test`.
+Testes unitários/integração apenas:
+```
+npx jest --selectProjects 'Unit and Integration Tests'
+```
 
-Você pode executar somente os testes unitários/integração com `npx jest --selectProjects 'Unit and Integration Tests'` e somente os testes e2e com `npx jest --selectProjects 'E2E Tests'`.
+Testes e2e apenas:
+```
+npx jest --selectProjects 'E2E Tests'
+```
 
 ### Playground
 
-O projeto conta com um ambiente preparado para esculpir os componentes React, com `HotModuleReplacementPlugin` e `ReactRefreshWebpackPlugin`, ou seja, os componentes atualizam automaticamente assim que o código é alterado. O ambiente é muito útil para construção dos componentes antes de usá-los como extensão e testar no SEI.
+Ambiente com hot reload para desenvolvimento de componentes React:
 
-Execute `npm run playground` e abra seu navegador em `http://localhost:8080/`.
+```
+npm run playground
+```
 
-![Playground](/docs/images/playground.png)
+Acesse `http://localhost:8080/` no navegador.
 
-### Regras para codificar
+### Padrões de código
 
-O projeto usa o `eslint` como linter e o `prettier` para formatação do código. As regras estão no arquivo `.eslintrc.js` e `.prettierrc.js`.
+O projeto usa `eslint` e `prettier`. As regras estão em `.eslintrc.js` e `.prettierrc.js`. Todo o código é escrito em inglês.
 
-Todo o código é escrito em inglês, para manter um padrão. Os termos em português do SEI foram traduzidos livremente.
+---
+
+_Fork mantido pela comunidade. Projeto original por [Luís Carlos Reischak Júnior](https://github.com/luiscrjunior/sei-trello) — licença MIT._
