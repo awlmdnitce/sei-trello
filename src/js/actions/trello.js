@@ -77,8 +77,25 @@ const doCreateCard = (options) => {
   });
 };
 
+const getCachedBoardAndList = (boardName, listName) =>
+  new Promise((resolve) => {
+    const cacheKey = `cache_${boardName}_${listName}`;
+    chrome.storage.local.get({ [cacheKey]: null }, (items) => {
+      resolve(items[cacheKey]);
+    });
+  });
+
+const setCachedBoardAndList = (boardName, listName, value) => {
+  const cacheKey = `cache_${boardName}_${listName}`;
+  chrome.storage.local.set({ [cacheKey]: value });
+};
+
 const getDefaultBoardAndList = async () => {
   const { defaultBoardName, defaultListName } = await getDefaultBoardAndListFromStorage();
+
+  const cached = await getCachedBoardAndList(defaultBoardName, defaultListName);
+  if (cached) return cached;
+
   const {
     data: { boards },
   } = await api.searchBoardsByName(defaultBoardName);
@@ -89,17 +106,15 @@ const getDefaultBoardAndList = async () => {
     } = await api.getListsFromBoard(defaultBoard.id);
     const defaultList = lists.find((list) => list.name === defaultListName);
     if (defaultList) {
-      return {
-        defaultBoard: defaultBoard,
-        defaultList: defaultList,
-      };
+      const result = { defaultBoard, defaultList };
+      setCachedBoardAndList(defaultBoardName, defaultListName, result);
+      return result;
     } else {
       try {
         const { data: createdList } = await api.createList(defaultBoard.id, defaultListName);
-        return {
-          defaultBoard: defaultBoard,
-          defaultList: createdList,
-        };
+        const result = { defaultBoard, defaultList: createdList };
+        setCachedBoardAndList(defaultBoardName, defaultListName, result);
+        return result;
       } catch (e) {
         throw new Error('lista padrão não encontrada e não foi possível criá-la');
       }
@@ -108,10 +123,9 @@ const getDefaultBoardAndList = async () => {
     try {
       const { data: createdBoard } = await api.createBoard(defaultBoardName);
       const { data: createdList } = await api.createList(createdBoard.id, defaultListName);
-      return {
-        defaultBoard: createdBoard,
-        defaultList: createdList,
-      };
+      const result = { defaultBoard: createdBoard, defaultList: createdList };
+      setCachedBoardAndList(defaultBoardName, defaultListName, result);
+      return result;
     } catch (e) {
       throw new Error('quadro padrão não encontrado e não foi possível criá-lo');
     }

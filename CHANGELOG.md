@@ -1,3 +1,7 @@
+## [1.6.9] - 25/06/2026
+
+- Otimização de performance: IDs do quadro e lista padrão do Trello agora são cacheados no `chrome.storage.local` após a primeira busca, eliminando 2 chamadas desnecessárias à API do Trello em cada carregamento de página. Os cartões aparecem significativamente mais rápido a partir da segunda visita.
+
 ## [1.6.8] - 25/06/2026
 
 - Atualizada `homepage_url` e campo `author` no manifest para apontar para o repositório do fork.
