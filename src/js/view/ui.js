@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import TrelloCard from './components/TrelloCard';
 import TrelloRefreshButton from './components/TrelloRefreshButton';
 import TrelloFilterButton from './components/TrelloFilterButton';
-import TrelloArchiveButton from './components/TrelloArchiveButton';
 import CreateTrelloCardButton from './components/CreateTrelloCardButton';
 
 import * as filter from './helper/filter.js';
@@ -29,21 +28,6 @@ const renderFilterButton = (placeholder, data) => {
       hasFilter={!filter.isFilterEmpty(data.filter)}
       onFilterChange={(type, checked, key) => actions.updateFilter(type, checked, key)}
     ></TrelloFilterButton>,
-    placeholder
-  );
-};
-
-const getProcessNumbersOnScreen = () => {
-  const boxes = document.querySelectorAll('[data-trello-process-number]');
-  return Array.prototype.map.call(boxes, (box) => box.getAttribute('data-trello-process-number'));
-};
-
-const renderArchiveButton = (placeholder, data) => {
-  ReactDOM.render(
-    <TrelloArchiveButton
-      onClick={() => actions.archiveOrphanCards(getProcessNumbersOnScreen())}
-      isLoading={data.isLoading}
-    ></TrelloArchiveButton>,
     placeholder
   );
 };
@@ -139,11 +123,6 @@ export const render = () => {
     'filter-button': {
       selector: '.trello-filter-button',
       fn: renderFilterButton,
-      elements: [],
-    },
-    'archive-button': {
-      selector: '.trello-archive-button',
-      fn: renderArchiveButton,
       elements: [],
     },
     'process-box': {

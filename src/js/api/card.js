@@ -65,10 +65,6 @@ export const updateCard = (cardID, opts) => {
   return axios.put(url, params);
 };
 
-export const archiveCard = (cardID) => {
-  return updateCard(cardID, { closed: 'true' });
-};
-
 export const deleteCard = (cardID) => {
   const url = 'https://api.trello.com/1/cards/' + cardID;
 

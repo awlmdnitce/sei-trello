@@ -1,7 +1,3 @@
-## [1.6.10] - 21/07/2026
-
-- Novo botão "Arquivar cartões órfãos" na barra de comandos da tela de Controle de Processos: identifica cartões do quadro padrão cujos processos SEI não estão mais na caixa da unidade e os arquiva no Trello (com confirmação prévia listando os cartões afetados). Cartões arquivados podem ser restaurados pelo próprio Trello.
-
 ## [1.6.9] - 25/06/2026
 
 - Otimização de performance: IDs do quadro e lista padrão do Trello agora são cacheados no `chrome.storage.local` após a primeira busca, eliminando 2 chamadas desnecessárias à API do Trello em cada carregamento de página. Os cartões aparecem significativamente mais rápido a partir da segunda visita.
