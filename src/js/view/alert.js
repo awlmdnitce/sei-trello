@@ -20,6 +20,21 @@ export const confirm = (text) => {
   });
 };
 
+export const confirmArchive = (html) => {
+  return Swal.fire({
+    title: 'Arquivar cartões?',
+    html: html,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: `Sim, arquivar!`,
+    cancelButtonText: `Não`,
+  });
+};
+
+export const info = (text) => {
+  alert('info', text);
+};
+
 export const error = (text) => {
   alert('error', text);
 };

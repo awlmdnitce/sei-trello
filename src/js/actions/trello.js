@@ -155,6 +155,68 @@ export const refreshCards = (processNumber) => {
     });
 };
 
+const extractProcessNumbersFromDesc = (desc) => {
+  const regex = /^SEI\s+([0-9./-]+)$/gm;
+  const numbers = [];
+  let match;
+  while ((match = regex.exec(desc))) numbers.push(match[1]);
+  return numbers;
+};
+
+export const archiveOrphanCards = async (processNumbersOnScreen) => {
+  if (store.getData().isLoading) return;
+
+  if (!processNumbersOnScreen || processNumbersOnScreen.length === 0) {
+    alert.info('Nenhum processo encontrado na tela. O arquivamento só funciona na tela de Controle de Processos.');
+    return;
+  }
+
+  store.setIsLoading(true);
+
+  try {
+    const { defaultBoard } = await getDefaultBoardAndList();
+    const { data: boardLists } = await api.searchBoardCards(defaultBoard);
+    const boardCards = handler.getCardsFromBoard(boardLists, defaultBoard);
+
+    /* cartões cujos processos SEI não estão mais na tela (caixa da unidade) */
+    const orphanCards = boardCards.filter((card) => {
+      const processNumbers = extractProcessNumbersFromDesc(card.desc);
+      if (processNumbers.length === 0) return false; /* cartão sem vínculo com processo: não mexer */
+      return processNumbers.every((processNumber) => !processNumbersOnScreen.includes(processNumber));
+    });
+
+    store.setIsLoading(false);
+
+    if (orphanCards.length === 0) {
+      alert.success('Nenhum cartão para arquivar: todos os cartões do quadro têm processos na sua caixa.');
+      return;
+    }
+
+    const listHtml = orphanCards
+      .map((card) => `<li style="text-align:left">${card.name}</li>`)
+      .join('');
+    const result = await alert.confirmArchive(
+      `<p>Os processos destes ${orphanCards.length} cartão(ões) não estão mais na sua caixa do SEI:</p>` +
+        `<ul style="max-height:200px;overflow-y:auto">${listHtml}</ul>` +
+        `<p>Eles serão arquivados no Trello (podem ser restaurados por lá).</p>`
+    );
+
+    if (!result.isConfirmed) return;
+
+    store.setIsLoading(true);
+    for (const card of orphanCards) {
+      await api.archiveCard(card.id);
+    }
+    store.setIsLoading(false);
+    alert.success(`${orphanCards.length} cartão(ões) arquivado(s) com sucesso.`);
+    refreshCards();
+  } catch (error) {
+    store.setIsLoading(false);
+    console.log(error);
+    alert.error(DEFAULT_SYNC_ERROR_MSG);
+  }
+};
+
 export const updateCardData = (cardID, newCardData) => {
   Object.assign(newCardData, { isLoading: true });
   store.updateCardsData(cardID, newCardData);
