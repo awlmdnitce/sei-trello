@@ -19,6 +19,10 @@ html.sei-v3015 {
     > #header {
       position: static;
       overflow: hidden;
+      /* fix: impede que o cabeçalho (número do processo) colapse quando a
+         árvore cresce ao expandir pastas/volumes no SEI 4.x (issue #67 do
+         repositório original) */
+      flex-shrink: 0;
     }
 
     > #container {
@@ -26,6 +30,11 @@ html.sei-v3015 {
       height: auto;
       margin-top: 0;
       flex: 1;
+      /* fix: a rolagem passa a ocorrer somente na lista de documentos,
+         mantendo o número do processo sempre visível (comportamento nativo
+         do SEI 4.x) */
+      overflow: auto;
+      min-height: 0;
     }
   }
 }

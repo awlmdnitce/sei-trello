@@ -14,6 +14,7 @@ Comparado ao projeto original, esta versão traz:
 - ✅ **Manifest V3** — necessário para continuar funcionando no Chrome e Firefox modernos
 - ✅ **Cores responsivas ao tema do SEI** — os cartões Trello assumem automaticamente a cor de tema escolhida pelo usuário no SEI
 - ✅ **Build atualizado** — migração de `node-sass` para `sass` (Dart Sass), compatível com Node.js 22+
+- ✅ **Número do processo sempre visível** — corrigido o bug em que o número do processo sumia do topo da árvore ao expandir pastas/volumes (botão "+") no SEI 4.x ([issue #67 do projeto original](https://github.com/luiscrjunior/sei-trello/issues/67))
 
 ## Política de Privacidade
 

@@ -1,3 +1,7 @@
+## [1.6.10] - 23/07/2026
+
+- Corrigido bug em que o número do processo desaparecia do topo da árvore ao expandir as pastas/volumes (botão "+") no SEI 4.x. O cabeçalho com o número do processo agora permanece sempre visível e apenas a lista de documentos possui rolagem, seguindo o comportamento nativo do SEI 4 (relacionado à issue #67 do repositório original).
+
 ## [1.6.9] - 25/06/2026
 
 - Otimização de performance: IDs do quadro e lista padrão do Trello agora são cacheados no `chrome.storage.local` após a primeira busca, eliminando 2 chamadas desnecessárias à API do Trello em cada carregamento de página. Os cartões aparecem significativamente mais rápido a partir da segunda visita.
